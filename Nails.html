@@ -3,63 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nails Vertical Gallery</title>
+    <title>Nails Gallery</title>
     <style>
-        /* 1. Basic Reset */
-        body, html {
+        /* 1. Base Styles */
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: #fcfcfc;
             margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #000; /* Dark background for professional look */
-        }
-
-        /* 2. Container to enable Vertical Scrolling & Snapping */
-        .scroll-container {
-            width: 100%;
-            height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory; /* Forces snapping vertically */
-            scrollbar-width: none; /* Hides scrollbar on Firefox */
-        }
-
-        .scroll-container::-webkit-scrollbar {
-            display: none; /* Hides scrollbar on Chrome/Safari/Edge */
-        }
-
-        /* 3. Individual Image Sections */
-        .section {
-            width: 100%;
-            height: 100vh; /* Exactly one full screen height */
-            scroll-snap-align: start; /* Where to snap (top of image) */
+            padding: 2rem;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
-        .section img {
+        h1 { margin-bottom: 2rem; color: #333; }
+
+        /* 2. Responsive Grid Layout */
+        .gallery {
+            display: grid;
+            /* Automatically creates columns that are at least 280px wide */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             width: 100%;
-            height: 100%;
-            /* 'cover' ensures the image fills the screen while maintaining aspect ratio */
-            object-fit: cover; 
+            max-width: 1200px; /* Limits width on large monitors */
+        }
+
+        /* 3. Image Container & Anti-Distortion */
+        .gallery-item {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px); /* Subtle lift effect */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
             display: block;
+            /* Ensures images fill the space without stretching */
+            object-fit: cover; 
+            /* Optional: Forces a uniform shape (e.g., square) if images differ */
+            aspect-ratio: 1 / 1; 
         }
     </style>
 </head>
 <body>
 
-    <div class="scroll-container">
-        <div class="section">
-            <img src="Nails/1.png" alt="Nail Design 1">
-        </div>
-        <div class="section">
-            <img src="Nails/2.png" alt="Nail Design 2">
-        </div>
-        <div class="section">
-            <img src="Nails/3.png" alt="Nail Design 3">
-        </div>
-        <div class="section">
-            <img src="Nails/4.png" alt="Nail Design 4">
-        </div>
+    <h1>Nails Portfolio</h1>
+
+    <div class="gallery">
+        <div class="gallery-item"><img src="Nails/1.png" alt="Nail Design 1"></div>
+        <div class="gallery-item"><img src="Nails/2.png" alt="Nail Design 2"></div>
+        <div class="gallery-item"><img src="Nails/3.png" alt="Nail Design 3"></div>
+        <div class="gallery-item"><img src="Nails/4.png" alt="Nail Design 4"></div>
     </div>
 
 </body>
