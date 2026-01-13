@@ -3,55 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nails Gallery</title>
+    <title>Nails Full Screen Gallery</title>
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #f9f9f9;
+        /* Remove default browser margins */
+        body, html {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            height: 100%;
+            /* Enable vertical scroll snapping */
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
         }
-        .gallery {
+
+        .section {
+            width: 100%;
+            height: 100vh; /* Set height to 100% of the viewport */
+            scroll-snap-align: start; /* Snap to the top of each image */
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
-        .gallery-item {
-            background: #fff;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .gallery img {
-            width: 250px; /* Adjust as needed */
-            height: auto;
+
+        .section img {
+            width: 100%;
+            height: 100%;
+            /* 'cover' ensures the image fills the screen without distortion, 
+               though it may crop the edges */
+            object-fit: cover; 
             display: block;
-            border-radius: 5px;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <h1>Nails Portfolio</h1>
+    <div class="section">
+        <img src="Nails/1.png" alt="Nail Design 1">
+    </div>
 
-    <div class="gallery">
-        <div class="gallery-item">
-            <img src="Nails/1.png" alt="Nail design 1">
-        </div>
-        <div class="gallery-item">
-            <img src="Nails/2.png" alt="Nail design 2">
-        </div>
-        <div class="gallery-item">
-            <img src="Nails/3.png" alt="Nail design 3">
-        </div>
-        <div class="gallery-item">
-            <img src="Nails/4.png" alt="Nail design 4">
-        </div>
+    <div class="section">
+        <img src="Nails/2.png" alt="Nail Design 2">
+    </div>
+
+    <div class="section">
+        <img src="Nails/3.png" alt="Nail Design 3">
+    </div>
+
+    <div class="section">
+        <img src="Nails/4.png" alt="Nail Design 4">
     </div>
 
 </body>
