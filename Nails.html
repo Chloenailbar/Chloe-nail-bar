@@ -3,33 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nails Full Screen Gallery</title>
+    <title>Nails Vertical Gallery</title>
     <style>
-        /* Remove default browser margins */
+        /* 1. Basic Reset */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            /* Enable vertical scroll snapping */
-            scroll-snap-type: y mandatory;
-            overflow-y: scroll;
+            background-color: #000; /* Dark background for professional look */
         }
 
+        /* 2. Container to enable Vertical Scrolling & Snapping */
+        .scroll-container {
+            width: 100%;
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory; /* Forces snapping vertically */
+            scrollbar-width: none; /* Hides scrollbar on Firefox */
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none; /* Hides scrollbar on Chrome/Safari/Edge */
+        }
+
+        /* 3. Individual Image Sections */
         .section {
             width: 100%;
-            height: 100vh; /* Set height to 100% of the viewport */
-            scroll-snap-align: start; /* Snap to the top of each image */
+            height: 100vh; /* Exactly one full screen height */
+            scroll-snap-align: start; /* Where to snap (top of image) */
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
         }
 
         .section img {
             width: 100%;
             height: 100%;
-            /* 'cover' ensures the image fills the screen without distortion, 
-               though it may crop the edges */
+            /* 'cover' ensures the image fills the screen while maintaining aspect ratio */
             object-fit: cover; 
             display: block;
         }
@@ -37,20 +47,19 @@
 </head>
 <body>
 
-    <div class="section">
-        <img src="Nails/1.png" alt="Nail Design 1">
-    </div>
-
-    <div class="section">
-        <img src="Nails/2.png" alt="Nail Design 2">
-    </div>
-
-    <div class="section">
-        <img src="Nails/3.png" alt="Nail Design 3">
-    </div>
-
-    <div class="section">
-        <img src="Nails/4.png" alt="Nail Design 4">
+    <div class="scroll-container">
+        <div class="section">
+            <img src="Nails/1.png" alt="Nail Design 1">
+        </div>
+        <div class="section">
+            <img src="Nails/2.png" alt="Nail Design 2">
+        </div>
+        <div class="section">
+            <img src="Nails/3.png" alt="Nail Design 3">
+        </div>
+        <div class="section">
+            <img src="Nails/4.png" alt="Nail Design 4">
+        </div>
     </div>
 
 </body>
